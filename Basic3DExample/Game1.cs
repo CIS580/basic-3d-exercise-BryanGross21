@@ -9,6 +9,10 @@ namespace Basic3DExample
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
+        Triangle triangle;
+        Quad quad;
+        Cube cube;
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -27,6 +31,11 @@ namespace Basic3DExample
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            triangle = new Triangle(this);
+
+            quad = new Quad(this);
+
+            cube = new Cube(this);
             // TODO: use this.Content to load your game content here
         }
 
@@ -36,8 +45,12 @@ namespace Basic3DExample
                 Exit();
 
             // TODO: Add your update logic here
-
+                
             base.Update(gameTime);
+
+            triangle.Update(gameTime);
+
+            cube.Update(gameTime);   
         }
 
         protected override void Draw(GameTime gameTime)
@@ -46,7 +59,13 @@ namespace Basic3DExample
 
             // TODO: Add your drawing code here
 
+
+
             base.Draw(gameTime);
-        }
+
+            cube.Draw();
+			quad.Draw();
+			triangle.Draw();
+		}
     }
 }
